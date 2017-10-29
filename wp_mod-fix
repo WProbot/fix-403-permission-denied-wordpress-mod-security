@@ -1,0 +1,18 @@
+<LocationMatch "/>
+SecRuleRemoveById 910006 # Google robot activity - Useful in someways but noisy for sites where you want them crawled
+SecRuleRemoveById 960015 # Request Missing an Accept Header -  Allow for Google Reader
+</LocationMatch>
+
+<LocationMatch "/wp-includes/">
+SecRuleRemoveById 960010 # Request content type is not allowed by policy - Allows for amongst other things spell check to work on admin area
+SecRuleRemoveById 960012 # Require Content-Length to be provided with every POST request - Same as above
+</LocationMatch> 
+
+<LocationMatch "(/wp-admin/|/wp-login.php)">    
+SecRuleRemoveById 950005 # Remote File Access Attempt - This rule probably doesn't need to be disabled by everyone but it stops me putting /etc/ in posts and other such linux paths.
+SecRuleRemoveById 950117 # Remote File Inclusion Attack - Disable to allow http:// to be passed in args
+</LocationMatch>
+
+<LocationMatch "(/wp-admin/post.php|/wp-admin/options.php|/wp-admin/theme-editor.php|/wp-includes/)">
+SecRuleRemoveById 950006 # System Command Injection - Another rule that probably doesn't need to be disabled by everyone it stops .exe and various other extensions being passed in args.
+</LocationMatch>

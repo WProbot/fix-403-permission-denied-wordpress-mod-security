@@ -9,7 +9,8 @@ inside virtual host -> between </Directory> and </VirtualHost>
 
 like:
 
-```<VirtualHost 12.11.11.11:8080>
+```
+<VirtualHost 12.11.11.11:8080>
 
     ServerName domain.com
     ServerAlias www.domain.com
@@ -52,6 +53,7 @@ SecRuleRemoveById 950117 # Remote File Inclusion Attack - Disable to allow http:
 SecRuleRemoveById 950006 # System Command Injection - Another rule that probably doesn't need to be disabled by everyone it stops .exe and various other extensions being passed in args.
 </LocationMatch>
    
-</VirtualHost>```
+</VirtualHost>
+```
 
 Goodluck
